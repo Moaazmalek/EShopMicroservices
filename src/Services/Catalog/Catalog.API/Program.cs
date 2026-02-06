@@ -1,3 +1,5 @@
+using JasperFx;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //Add Services to the container.
@@ -8,6 +10,11 @@ builder.Services.AddMediatR(config =>
         );
 
 });
+builder.Services.AddMarten(options =>
+{
+    options.Connection("Host=localhost;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres"); options.AutoCreateSchemaObjects=AutoCreate.All;
+
+}).UseLightweightSessions();
 
 var app = builder.Build();
 

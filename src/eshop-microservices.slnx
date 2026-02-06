@@ -6,4 +6,7 @@
   <Folder Name="/Services/Catalog/">
     <Project Path="D:/CSharp/UdemyMicroservicesCourse/EShopMicroservices/src/Services/Catalog/Catalog.API/Catalog.API.csproj" Id="b46a9dcd-5898-4c2b-8724-30ae107eb6ce" />
   </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>
