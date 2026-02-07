@@ -1,3 +1,4 @@
+using BuildingBlocks.Behaviors;
 using JasperFx;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,10 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCarter();
 builder.Services.AddMediatR(config =>
 {
-    config.RegisterServicesFromAssemblies(typeof(Program).Assembly
-        );
+    config.RegisterServicesFromAssemblies(typeof(Program).Assembly );
+    config.AddOpenBehavior(typeof(ValidationBehaviors<,>));
 
 });
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 builder.Services.AddMarten(options =>
 {
     options.Connection("Host=localhost;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres"); options.AutoCreateSchemaObjects=AutoCreate.All;
