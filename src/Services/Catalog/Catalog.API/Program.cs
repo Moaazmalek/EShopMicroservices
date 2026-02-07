@@ -4,14 +4,15 @@ using JasperFx;
 var builder = WebApplication.CreateBuilder(args);
 
 //Add Services to the container.
-builder.Services.AddCarter();
+var assembly=typeof(Program).Assembly;
 builder.Services.AddMediatR(config =>
 {
-    config.RegisterServicesFromAssemblies(typeof(Program).Assembly );
+    config.RegisterServicesFromAssemblies(assembly);
     config.AddOpenBehavior(typeof(ValidationBehaviors<,>));
 
 });
-builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+builder.Services.AddValidatorsFromAssembly(assembly);
+builder.Services.AddCarter();
 builder.Services.AddMarten(options =>
 {
     options.Connection("Host=localhost;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres"); options.AutoCreateSchemaObjects=AutoCreate.All;

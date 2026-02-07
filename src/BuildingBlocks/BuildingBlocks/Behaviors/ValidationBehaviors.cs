@@ -25,7 +25,7 @@ namespace BuildingBlocks.Behaviors
                 .ToList();
             if (failures.Any())
             {
-                throw new ValidationException(failures)
+                throw new ValidationException(failures);
             }
            return  await next();
 
