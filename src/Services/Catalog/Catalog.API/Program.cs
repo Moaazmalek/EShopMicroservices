@@ -1,4 +1,7 @@
 
+using HealthChecks.UI.Client;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 //Add Services to the container.
@@ -15,7 +18,8 @@ builder.Services.AddValidatorsFromAssembly(assembly);
 builder.Services.AddCarter();
 builder.Services.AddMarten(options =>
 {
-    options.Connection("Host=localhost;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres"); options.AutoCreateSchemaObjects = AutoCreate.All;
+    options.Connection(builder.Configuration.GetConnectionString("Database"));
+    options.AutoCreateSchemaObjects = AutoCreate.All;
 
 }).UseLightweightSessions();
 
@@ -24,10 +28,31 @@ if (builder.Environment.IsDevelopment())
     builder.Services.InitializeMartenWith<CatalogInitialData>();
 }
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+builder.Services.AddHealthChecks()
+    .AddNpgSql(builder.Configuration.GetConnectionString("Database")!);
+
+//Add HealthChecks UI
+
+builder.Services
+    .AddHealthChecksUI(options =>
+    {
+        options.AddHealthCheckEndpoint("API", "/health");
+    })
+    .AddInMemoryStorage();
+
 var app = builder.Build();
 
 //Configure the HTTP request pipeline.
 app.MapCarter();
 app.UseExceptionHandler(options => { });
+
+app.UseHealthChecks("/health",new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+{
+    ResponseWriter=UIResponseWriter.WriteHealthCheckUIResponse
+});
+app.MapHealthChecksUI(options =>
+{
+    options.UIPath = "/health-ui";
+});
 
 app.Run();

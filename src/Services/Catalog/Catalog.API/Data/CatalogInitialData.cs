@@ -18,7 +18,7 @@ namespace Catalog.API.Data
 
 
         }
-        private static IEnumerable<Product> GetPreconfiguredProducts() => new List<Product>() {
+        private static IEnumerable<Product> GetPreconfiguredProducts() => [
              new()
                 {
                     Id = new Guid("5334c996-8457-4cf0-815c-ed2b77c4ff61"),
@@ -26,7 +26,7 @@ namespace Catalog.API.Data
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-1.png",
                     Price = 950.00M,
-                    Category = new List<string> { "Smart Phone" }
+                    Category = ["Smart Phone"]
                 },
                 new()
                 {
@@ -53,7 +53,7 @@ namespace Catalog.API.Data
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-4.png",
                     Price = 470.00M,
-                    Category = new List<string> { "White Appliances" }
+                    Category = ["White Appliances"]
                 },
                 new ()
                 {
@@ -62,7 +62,7 @@ namespace Catalog.API.Data
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-5.png",
                     Price = 380.00M,
-                    Category = new List<string> { "Smart Phone" }
+                    Category =["Smart Phone"]
                 },
                 new ()
                 {
@@ -71,7 +71,7 @@ namespace Catalog.API.Data
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-6.png",
                     Price = 240.00M,
-                    Category = new List<string> { "Home Kitchen" }
+                    Category = ["Home Kitchen"]
                 },
                 new()
                 {
@@ -80,8 +80,8 @@ namespace Catalog.API.Data
                     Description = "This phone is the company's biggest change to its flagship smartphone in years. It includes a borderless.",
                     ImageFile = "product-6.png",
                     Price = 240.00M,
-                    Category = new List<string> { "Camera" }
+                    Category = ["Camera"]
                 }
-            };
+            ];
 }
 }
