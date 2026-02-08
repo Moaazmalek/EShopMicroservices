@@ -26,8 +26,7 @@ namespace Catalog.API.Products.CreateProduct
 
     }
     internal class CreateProductCommandHandler
-        (IDocumentSession session,
-        ILogger<CreateProductCommandHandler> logger
+        (IDocumentSession session
         )
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
@@ -39,7 +38,6 @@ namespace Catalog.API.Products.CreateProduct
             //Save to database 
             //Return the result
 
-            logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}", command);
 
             var product = new Product
             {
