@@ -12,3 +12,4 @@ global using JasperFx;
 global using BuildingBlocks.Exceptions.Handler;
 global using Catalog.API.Data;
 
+

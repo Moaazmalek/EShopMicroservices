@@ -1,6 +1,27 @@
-﻿namespace Basket.API.Basket.StoreBasket
+﻿
+
+
+namespace Basket.API.Basket.StoreBasket
 {
-    public class StoreBasketCommandHandler
+    public record StoreBasketCommand(ShoppingCart Cart):ICommand<StoreBasketResult>;
+    public record StoreBasketResult(string UserName);
+    public class StorBasketCommandValidator:AbstractValidator<StoreBasketCommand>
     {
+        public StorBasketCommandValidator()
+        {
+            RuleFor(x => x.Cart).NotNull().WithMessage("Cart can't be null");
+            RuleFor(x => x.Cart.UserName).NotEmpty().WithMessage("UserName is required");
+        }
+    }
+    public class StoreBasketCommandHandler : ICommandHandler<StoreBasketCommand, StoreBasketResult>
+    {
+        public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
+        {
+            var cart = command.Cart;
+
+            //TODO: store basket in database(use Marten upsert -if exist = update, if no create
+            //TODO: update cache
+            return new StoreBasketResult("swn");
+        }
     }
 }

@@ -18,7 +18,7 @@ builder.Services.AddValidatorsFromAssembly(assembly);
 builder.Services.AddCarter();
 builder.Services.AddMarten(options =>
 {
-    options.Connection(builder.Configuration.GetConnectionString("Database"));
+    options.Connection(builder.Configuration.GetConnectionString("Database")!);
     options.AutoCreateSchemaObjects = AutoCreate.All;
 
 }).UseLightweightSessions();
