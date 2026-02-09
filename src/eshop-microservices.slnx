@@ -3,6 +3,9 @@
     <Project Path="D:/CSharp/UdemyMicroservicesCourse/EShopMicroservices/src/BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj" Id="2395c9d0-27f4-4c79-bfc4-772e2bdb227e" />
   </Folder>
   <Folder Name="/Services/" />
+  <Folder Name="/Services/Basket/">
+    <Project Path="Services/Basket/Basket.API/Basket.API.csproj" Id="1f34c965-c76f-49f7-887b-61d11f0c9e93" />
+  </Folder>
   <Folder Name="/Services/Catalog/">
     <Project Path="D:/CSharp/UdemyMicroservicesCourse/EShopMicroservices/src/Services/Catalog/Catalog.API/Catalog.API.csproj" Id="b46a9dcd-5898-4c2b-8724-30ae107eb6ce" />
   </Folder>
