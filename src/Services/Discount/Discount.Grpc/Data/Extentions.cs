@@ -9,8 +9,9 @@ namespace Discount.Grpc.Data
         {
             // Create a scope to get the DbContext instance
             using var scope= app.ApplicationServices.CreateScope();
+            // Get the dbcontext from the service provider container
             using var dbContext = scope.ServiceProvider.GetRequiredService<DiscountDbContext>();
-
+            // Add db if not created, apply migration appended, if all is okay , do nothing.
              await dbContext.Database.MigrateAsync();
 
             return app;

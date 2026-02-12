@@ -2,16 +2,19 @@
 using Discount.Grpc.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Discount.Grpc.Data.Migrations
+namespace Discount.Grpc.Migrations
 {
     [DbContext(typeof(DiscountDbContext))]
-    partial class DiscountDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260212101541_AlterCouponProductNameColumn")]
+    partial class AlterCouponProductNameColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.3");
@@ -29,13 +32,29 @@ namespace Discount.Grpc.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Productname")
+                    b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("Coupons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 150,
+                            Description = "IPhone Discount",
+                            ProductName = "IPhone X"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Amount = 100,
+                            Description = "Samsung Discount",
+                            ProductName = "Samsung S10"
+                        });
                 });
 #pragma warning restore 612, 618
         }
