@@ -19,6 +19,7 @@ mono_crash.*
 #app settings 
 # Ignore appsettings in all services
 src/**/appsettings*.json
+src/Services/**/discount.db
 # docker-compose.*.yml
 # !docker-compose.yml
 
