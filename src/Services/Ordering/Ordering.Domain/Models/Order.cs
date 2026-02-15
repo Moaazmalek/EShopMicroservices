@@ -18,5 +18,8 @@ namespace Ordering.Domain.Models
             private set { }
         }
 
+
+
+
     }
 }
