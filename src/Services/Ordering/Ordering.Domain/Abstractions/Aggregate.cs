@@ -17,5 +17,6 @@ namespace Ordering.Domain.Abstractions
             _domainEvents.Clear();
             return dequeuedEvents;
         }
+
     }
 }
