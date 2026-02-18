@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
+﻿
 namespace Ordering.Infrastructure
 {
     public static class DependencyInjection
@@ -9,14 +7,13 @@ namespace Ordering.Infrastructure
             ,IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("Database");
-            //services.AddSingleton(connectionString); //Add Services to the container.
-            //services.AddDbContext<ApplicationDbContext>(options => {
-            //options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(connectionString));
 
-            //services.AddScoped<IApplicationDbContext,ApplicationDbContext>();
+            //services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             return services;
 
         }
-
+         
     }
 }
