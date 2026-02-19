@@ -39,7 +39,7 @@ namespace Ordering.Infrastructure.Data.Extensions
         }
         private static async Task SeedOrdersWithItemsAsync(ApplicationDbContext context)
         {
-            if(!await context.Products.AnyAsync())
+            if(!await context.Orders.AnyAsync())
             {
                 await context.Orders.AddRangeAsync(InitialData.OrdersWithItems);
                 await context.SaveChangesAsync();
