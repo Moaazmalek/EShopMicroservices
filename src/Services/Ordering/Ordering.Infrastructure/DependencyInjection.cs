@@ -1,4 +1,6 @@
 ﻿
+using Ordering.Application.Data;
+
 namespace Ordering.Infrastructure
 {
     public static class DependencyInjection
@@ -20,7 +22,7 @@ namespace Ordering.Infrastructure
             }
             );
 
-            //services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             return services;
 
         }

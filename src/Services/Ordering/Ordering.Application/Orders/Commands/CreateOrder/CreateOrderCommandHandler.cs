@@ -13,6 +13,7 @@ namespace Ordering.Application.Orders.Commands.CreateOrder
             //Create order entity from command object
             //save to database
             //return result
+            throw new NotImplementedException();
             
         }
     }
