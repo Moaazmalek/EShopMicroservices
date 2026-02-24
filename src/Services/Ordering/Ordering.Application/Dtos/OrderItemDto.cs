@@ -4,5 +4,5 @@
         Guid OrderId,
         Guid ProductId,
         int Quantity,
-        decimal Prcie);
+        decimal Price);
 }
