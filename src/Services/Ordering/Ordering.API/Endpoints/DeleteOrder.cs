@@ -9,7 +9,7 @@ namespace Ordering.API.Endpoints
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapDelete("/ordres/{id}", async (
+            app.MapDelete("/orders/{id}", async (
 
                 Guid Id, ISender sender) =>
             {
