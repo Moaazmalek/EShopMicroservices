@@ -18,6 +18,7 @@ namespace BuildingBlocks.Messaging.MassTransit
             services.AddMassTransit(config =>
             {
                 config.SetKebabCaseEndpointNameFormatter();
+                
                 if (assembly != null)
                 {
                     config.AddConsumers(assembly);

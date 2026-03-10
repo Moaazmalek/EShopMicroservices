@@ -1,6 +1,5 @@
 
 using HealthChecks.UI.Client;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,12 +32,7 @@ builder.Services.AddHealthChecks()
 
 //Add HealthChecks UI
 
-builder.Services
-    .AddHealthChecksUI(options =>
-    {
-        options.AddHealthCheckEndpoint("API", "/health");
-    })
-    .AddInMemoryStorage();
+
 
 var app = builder.Build();
 
@@ -50,9 +44,6 @@ app.UseHealthChecks("/health",new Microsoft.AspNetCore.Diagnostics.HealthChecks.
 {
     ResponseWriter=UIResponseWriter.WriteHealthCheckUIResponse
 });
-app.MapHealthChecksUI(options =>
-{
-    options.UIPath = "/health-ui";
-});
+
 
 app.Run();

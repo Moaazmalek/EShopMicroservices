@@ -1,6 +1,7 @@
 services:
   catalogdb:
     image: postgres
+   
 
   basketdb:
     image: postgres
