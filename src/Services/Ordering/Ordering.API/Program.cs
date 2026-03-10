@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 //API - Carter, HealthChecks, ..
 //----------------
 
+
 builder.Services
     .AddApplicationServices(builder.Configuration)
     .AddInfrastructureService(builder.Configuration)
